@@ -1,7 +1,8 @@
 import "./App.css";
+import Blueline from "./BlueLine/Blueline";
 
 function App() {
-  return <div className="App"></div>;
+  return <Blueline />;
 }
 
 export default App;
