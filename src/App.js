@@ -1,6 +1,6 @@
 import "./App.css";
-import Blueline from "./BlueLine/Blueline";
-import ViewTask from "./ViewTask/ViewTask";
+import Blueline from "./Components/BlueLine/Blueline";
+import ViewTask from "./Containers/ViewTask/ViewTask";
 
 function App() {
   return (
