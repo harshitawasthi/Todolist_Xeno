@@ -3,7 +3,7 @@ import { Button, Dropdown, ButtonGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/ViewTask.css";
 import { addtodo } from "../../Constants/Addtodo";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiFillCheckCircle } from "react-icons/ai";
 import { GrDrag } from "react-icons/gr";
 import { FiCircle } from "react-icons/fi";
 import { GiPlainCircle } from "react-icons/gi";
@@ -16,14 +16,13 @@ const DisplayColor = styled(GiPlainCircle)`
 
 const ViewTask = () => {
   const [todolist, settodolist] = useState(addtodo);
-
+  let myarr = [...todolist];
   return (
     <>
       <div className="Wrapper">
         <div className="NavWrapper">
           <nav className="navbar navbar-light  justify-content-between ">
             <h1 className="navbar-brand brand">To Do List</h1>
-
             <Button className="ButtonPadding">Add To Do</Button>
           </nav>
 
@@ -48,7 +47,14 @@ const ViewTask = () => {
                       <div className="SixDots">
                         <GrDrag />
                       </div>
-                      <div>
+                      <div
+                        onClick={() => {
+                          myarr.splice(index, 0);
+                          myarr[index].isSelected = false;
+                          console.log(myarr);
+                          settodolist(myarr);
+                        }}
+                      >
                         <FiCircle />
                       </div>
                     </div>
@@ -70,15 +76,20 @@ const ViewTask = () => {
                         <Dropdown.Menu>
                           <Dropdown.Item
                             onClick={() => {
-                              let myarr = [...todolist];
-                              myarr.splice(0, 1);
+                              myarr.splice(index, 1);
                               console.log(myarr);
                               settodolist(myarr);
                             }}
                           >
                             Delete
                           </Dropdown.Item>
-                          <Dropdown.Item onClick={() => {}}>
+                          <Dropdown.Item
+                            onClick={() => {
+                              const temp = { ...todolist[index] };
+                              console.log(temp);
+                              settodolist([...todolist, temp]);
+                            }}
+                          >
                             Duplicate
                           </Dropdown.Item>
                           <Dropdown.Item>Add Reminder</Dropdown.Item>
@@ -86,6 +97,39 @@ const ViewTask = () => {
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
+                  </div>
+                  <div className="ListLine"></div>
+                </div>
+              ) : null
+            )}
+          </div>
+
+          <div className="MiddleLine"></div>
+
+          <div className="Todolist">
+            <h1 className="TodolistName">Completed</h1>
+            <div className="Line"></div>
+
+            {myarr.map((value, index) =>
+              value.isSelected === false ? (
+                <div className="ListTodo" key={index}>
+                  <div className="AllWrapper">
+                    <div className="IconWrapper">
+                      <div className="SixDots">
+                        <GrDrag />
+                      </div>
+                      <div>
+                        <AiFillCheckCircle />
+                      </div>
+                    </div>
+                    <div className="dataWrapper">
+                      <h1 className="dataHeading">{value.heading}</h1>
+                      <div className="date">
+                        <DisplayColor bg={value.color} />
+                        <p className="datePara">{value.date}</p>
+                      </div>
+                    </div>
+                    <div className="dropdown"></div>
                   </div>
                   <div className="ListLine"></div>
                 </div>

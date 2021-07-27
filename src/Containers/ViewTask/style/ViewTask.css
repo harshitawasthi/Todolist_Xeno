@@ -33,7 +33,6 @@
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.2rem;
   color: #888;
-  letter-spacing: 0.1rem;
   outline: none;
   border: 0.1rem solid #eee;
   border-radius: 10rem;
@@ -127,4 +126,10 @@
   height: 0.1rem;
   background-color: #888;
   margin: 1rem 0;
+}
+.MiddleLine {
+  height: 0.1rem;
+  background-color: #888;
+  /* margin: 1rem 0; */
+  margin: 5rem;
 }
