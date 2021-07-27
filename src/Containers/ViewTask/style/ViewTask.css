@@ -136,3 +136,28 @@
 .Completed {
   margin-bottom: 5rem;
 }
+.CompldataWrapper {
+  display: flex;
+  flex: 2;
+  align-self: center;
+}
+.CompldataHeading {
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding-bottom: 0.5rem;
+  text-decoration: line-through;
+  color: grey;
+}
+.compdate {
+  display: flex;
+  padding-left: 0.3rem;
+  padding-top: 0.2rem;
+  color: grey;
+}
+.CompldatePara {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-bottom: 0;
+  padding-top: 0.1rem;
+  padding-left: 0.8rem;
+}

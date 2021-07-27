@@ -13,6 +13,11 @@ const DisplayColor = styled(GiPlainCircle)`
   color: ${(props) => props.bg};
   font-size: 1rem;
 `;
+const CompColor = styled(GiPlainCircle)`
+  color: ${(props) => props.bg};
+  font-size: 1rem;
+  padding-top: 0.5rem;
+`;
 const CheckColor = styled(AiFillCheckCircle)`
   color: #00f;
   font-size: 1rem;
@@ -119,15 +124,21 @@ const ViewTask = () => {
                       <div className="SixDots">
                         <GrDrag />
                       </div>
-                      <div>
+                      <div
+                        onClick={() => {
+                          myarr.splice(index, 0);
+                          myarr[index].isSelected = true;
+                          settodolist(myarr);
+                        }}
+                      >
                         <CheckColor />
                       </div>
                     </div>
-                    <div className="dataWrapper">
-                      <h1 className="dataHeading">{value.heading}</h1>
-                      <div className="date">
-                        <DisplayColor bg={value.color} />
-                        <p className="datePara">{value.date}</p>
+                    <div className="CompldataWrapper">
+                      <h1 className="CompldataHeading">{value.heading}</h1>
+                      <div className="compdate">
+                        <CompColor bg={value.comcolor} />
+                        <p className="CompldatePara">{value.compl}</p>
                       </div>
                     </div>
                     <div className="dropdown"></div>
