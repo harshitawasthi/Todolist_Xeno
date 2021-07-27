@@ -72,8 +72,7 @@
   background-color: #888;
 }
 .ListTodo {
-  margin: 1rem;
-  margin-top: 2rem;
+  margin-left: 1rem;
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -81,6 +80,7 @@
 .AllWrapper {
   display: flex;
   justify-content: space-between;
+  margin: 2rem;
 }
 .IconWrapper {
   font-size: 1rem;
@@ -94,19 +94,33 @@
 .dataWrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-self: center;
   flex: 2;
 }
 .dataHeading {
   font-size: 1.5rem;
   font-weight: 400;
+  padding-bottom: 0.5rem;
 }
 .dataPara {
   font-size: 1rem;
   font-weight: 300;
+  padding-bottom: 0.5rem;
 }
 .dataSpan {
   color: #00f;
   font-size: 0.8rem;
+}
+.date {
+  display: flex;
+  align-items: center;
+}
+.datePara {
+  margin-left: 0.4rem;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  /* align-self: baseline; */
 }
 .ListLine {
   /* width: 90%; */

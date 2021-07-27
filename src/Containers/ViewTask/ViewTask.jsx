@@ -6,8 +6,17 @@ import { addtodo } from "../../Constants/Addtodo";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GrDrag } from "react-icons/gr";
 import { FiCircle } from "react-icons/fi";
+import { GiPlainCircle } from "react-icons/gi";
+import styled from "styled-components";
+
+const DisplayColor = styled(GiPlainCircle)`
+  color: ${(props) => props.bg};
+  font-size: 0.8rem;
+`;
+
 const ViewTask = () => {
   const [todolist, settodolist] = useState(addtodo);
+
   return (
     <>
       <div className="Wrapper">
@@ -31,46 +40,57 @@ const ViewTask = () => {
             <h1 className="TodolistName">To Do</h1>
             <div className="Line"></div>
 
-            {addtodo.map((value, index) => (
-              <div className="ListTodo" key={index}>
-                <div className="AllWrapper">
-                  <div className="IconWrapper">
-                    <div className="SixDots">
-                      <GrDrag />
-                    </div>
-                    <div>
-                      <FiCircle />
-                    </div>
-                  </div>
-                  <div className="dataWrapper">
-                    <h1 className="dataHeading">{value.heading}</h1>
-                    <h2 className="dataPara">
-                      {value.cont}
-                      <span className="dataSpan">{value.span}</span>
-                    </h2>
-                    <div className="date">
-                      <div className="DisplayColor" bg={value.color}>
+            {todolist.map((value, index) =>
+              value.isSelected ? (
+                <div className="ListTodo" key={index}>
+                  <div className="AllWrapper">
+                    <div className="IconWrapper">
+                      <div className="SixDots">
+                        <GrDrag />
+                      </div>
+                      <div>
                         <FiCircle />
                       </div>
-                      <p>{value.date}</p>
+                    </div>
+                    <div className="dataWrapper">
+                      <h1 className="dataHeading">{value.heading}</h1>
+                      <h2 className="dataPara">
+                        {value.cont}
+                        <span className="dataSpan">{value.span}</span>
+                      </h2>
+                      <div className="date">
+                        <DisplayColor bg={value.color} />
+                        <p className="datePara">{value.date}</p>
+                      </div>
+                    </div>
+                    <div className="dropdown">
+                      <Dropdown as={ButtonGroup}>
+                        <Button className="Drop">Edit</Button>
+                        <Dropdown.Toggle split id="dropdown-split-basic" />
+                        <Dropdown.Menu>
+                          <Dropdown.Item
+                            onClick={() => {
+                              let myarr = [...todolist];
+                              myarr.splice(0, 1);
+                              console.log(myarr);
+                              settodolist(myarr);
+                            }}
+                          >
+                            Delete
+                          </Dropdown.Item>
+                          <Dropdown.Item onClick={() => {}}>
+                            Duplicate
+                          </Dropdown.Item>
+                          <Dropdown.Item>Add Reminder</Dropdown.Item>
+                          <Dropdown.Item>Add Comment</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </div>
                   </div>
-                  <div className="dropdown">
-                    <Dropdown as={ButtonGroup}>
-                      <Button className="Drop">Edit</Button>
-                      <Dropdown.Toggle split id="dropdown-split-basic" />
-                      <Dropdown.Menu>
-                        <Dropdown.Item>Delete</Dropdown.Item>
-                        <Dropdown.Item>Duplicate</Dropdown.Item>
-                        <Dropdown.Item>Add Reminder</Dropdown.Item>
-                        <Dropdown.Item>Add Comment</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
+                  <div className="ListLine"></div>
                 </div>
-                <div className="ListLine"></div>
-              </div>
-            ))}
+              ) : null
+            )}
           </div>
         </div>
       </div>
