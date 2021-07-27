@@ -11,7 +11,11 @@ import styled from "styled-components";
 
 const DisplayColor = styled(GiPlainCircle)`
   color: ${(props) => props.bg};
-  font-size: 0.8rem;
+  font-size: 1rem;
+`;
+const CheckColor = styled(AiFillCheckCircle)`
+  color: #00f;
+  font-size: 1rem;
 `;
 
 const ViewTask = () => {
@@ -51,7 +55,6 @@ const ViewTask = () => {
                         onClick={() => {
                           myarr.splice(index, 0);
                           myarr[index].isSelected = false;
-                          console.log(myarr);
                           settodolist(myarr);
                         }}
                       >
@@ -77,7 +80,6 @@ const ViewTask = () => {
                           <Dropdown.Item
                             onClick={() => {
                               myarr.splice(index, 1);
-                              console.log(myarr);
                               settodolist(myarr);
                             }}
                           >
@@ -86,7 +88,6 @@ const ViewTask = () => {
                           <Dropdown.Item
                             onClick={() => {
                               const temp = { ...todolist[index] };
-                              console.log(temp);
                               settodolist([...todolist, temp]);
                             }}
                           >
@@ -106,8 +107,8 @@ const ViewTask = () => {
 
           <div className="MiddleLine"></div>
 
-          <div className="Todolist">
-            <h1 className="TodolistName">Completed</h1>
+          <div className="Todolist Completed">
+            <h1 className="TodolistName CompletedName">Completed</h1>
             <div className="Line"></div>
 
             {myarr.map((value, index) =>
@@ -119,7 +120,7 @@ const ViewTask = () => {
                         <GrDrag />
                       </div>
                       <div>
-                        <AiFillCheckCircle />
+                        <CheckColor />
                       </div>
                     </div>
                     <div className="dataWrapper">
