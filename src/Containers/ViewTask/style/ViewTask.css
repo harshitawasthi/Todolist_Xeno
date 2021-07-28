@@ -121,6 +121,9 @@
   margin-bottom: 0;
   /* align-self: baseline; */
 }
+.Dropcolor {
+  background-color: transparent;
+}
 .ListLine {
   /* width: 90%; */
   height: 0.1rem;

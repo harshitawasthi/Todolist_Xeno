@@ -78,9 +78,22 @@ const ViewTask = () => {
                       </div>
                     </div>
                     <div className="dropdown">
-                      <Dropdown as={ButtonGroup}>
-                        <Button className="Drop">Edit</Button>
-                        <Dropdown.Toggle split id="dropdown-split-basic" />
+                      <Dropdown
+                        // className="btn btn-outline-dark"
+                        as={ButtonGroup}
+                      >
+                        <Button
+                          className="Drop btn-outline-dark shadow-lg bg-white "
+                          variant="transparent"
+                        >
+                          Edit
+                        </Button>
+                        <Dropdown.Toggle
+                          split
+                          className="btn-outline-dark shadow-lg "
+                          variant="transparent"
+                          id="dropdown-split-basic"
+                        />
                         <Dropdown.Menu>
                           <Dropdown.Item
                             onClick={() => {
